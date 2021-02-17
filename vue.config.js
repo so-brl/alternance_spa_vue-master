@@ -1,11 +1,23 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
+//
+// module.exports = {
+//   configureWebpack: {
+//     plugins: [
+//       new webpack.ProvidePlugin({
+//         mapboxgl: 'mapbox-gl',
+//       }),
+//     ],
+//   },
+// };
 
-module.exports = {
-  configureWebpack: {
-    plugins: [
-      new webpack.ProvidePlugin({
-        mapboxgl: 'mapbox-gl',
-      }),
-    ],
-  },
-};
+// const webpack = require('webpack')
+//
+// module.exports = {
+//     configureWebpack: {
+//         plugins: [
+//             new webpack.ProvidePlugin({
+//                 mapboxgl: 'mapbox-gl',
+//             }),
+//         ],
+//     },
+// }

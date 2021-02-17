@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <header id="app_header">
       <img src="./assets/logo-cn.png" alt="Logo Campus Numérique">
       <div>
@@ -12,6 +13,8 @@
 </template>
 
 <script>
+
+
 
 export default {
   name: 'App'

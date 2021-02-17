@@ -16,3 +16,136 @@ VUE_APP_OW_APP_ID=
 
 Compléter le fichier en y intégrant la latitude et la longitude de votre choix, ainsi que la clé APP_ID qui vous permettra d'appeler l'API OpenWeatherMap.
 Vérifiez ensuite que le projet démarre bien et que vous pouvez consulter les différentes vues.
+
+
+#MIGRATION :
+
+1-Installer le cli :
+```
+npm install -g @vue/cli
+```
+
+2-Mêttre à jour Vue :
+```
+npm install vue@next 
+```
+
+3-Mêttre à jour tous les plugins(dependances) :
+```
+Vue upgrade
+```
+
+4-Mêttre à jour le routeur :
+```
+npm install vue-router@next
+```
+
+5- Supprimer l'ancien compilateur de template
+```
+npm remove vue-template-compiler
+```
+6- Installer le nouveau compilateur 
+```
+npm install --save-dev @vue/compiler-sfc
+```
+-------------- 
+Dans main.js : 
+
+Remplacer :
+```
+import Vue from 'vue'
+```
+par :
+```
+import {createApp} from 'vue'
+```
+
+Commenter :
+```
+import {router} from './router';
+```
+Remplacer : 
+
+```
+Vue.config.productionTip = false;
+```
+par:
+
+```
+const app = createApp(App);
+```
+Remplacer:
+
+```
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app');
+```
+par:
+
+```
+app.mount('#app');
+```
+
+Lancer un : 
+````
+
+npm run serve
+````
+
+Comme l'import du router est commenter on ne voit que le bandeau et le logo du header , c'est normal .
+
+Décommenter l'import du router. 
+
+Aller dans src/router/index.js : 
+
+Supprimer :
+````
+import Vue from 'vue'
+````
+
+Couper :
+````
+Vue.use(VueRouter);
+````
+
+et coller le dans main.js (fichier précédement modifier) :
+et remplacer :
+-  `Vue.` par  `app.`
+-  `VueRouter` par  `router`
+
+````
+const app = createApp(App);
+app.use(router);
+app.mount('#app');
+````
+
+Retourner dans src/router/index.js :
+
+Remplacer :
+````
+import VueRouter from 'vue-router'
+````
+
+par :
+````
+import {createRouter, createWebHashHistory} from 'vue-router'
+````
+
+Remplacer : 
+````
+export const router = new VueRouter({
+  routes
+});
+
+````
+
+par : 
+````
+const router = createRouter({
+  history:createWebHashHistory(),
+  routes
+});
+export default router;
+````
