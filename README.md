@@ -100,52 +100,37 @@ Décommenter l'import du router.
 
 Aller dans src/router/index.js : 
 
-Supprimer :
-````
-import Vue from 'vue'
-````
-
-Couper :
-````
-Vue.use(VueRouter);
-````
-
-et coller le dans main.js (fichier précédement modifier) :
-et remplacer :
--  `Vue.` par  `app.`
--  `VueRouter` par  `router`
-
-````
-const app = createApp(App);
-app.use(router);
-app.mount('#app');
-````
-
-Retourner dans src/router/index.js :
-
-Remplacer :
-````
-import VueRouter from 'vue-router'
-````
-
-par :
+Supprimer le code et le remplacer par :
 ````
 import {createRouter, createWebHashHistory} from 'vue-router'
-````
+import CitiesList from "../components/CitiesList";
+import CitiesMap from "../components/CitiesMap";
+import City from "../components/City";
+import EasterEgg from "../components/EasterEgg";
 
-Remplacer : 
-````
-export const router = new VueRouter({
-  routes
-});
 
-````
 
-par : 
-````
+const routes = [
+  { path: '/villes', component: CitiesList },
+  { path: '/carte', component: CitiesMap },
+  { path: '/ville', component: City },
+  { path: '/onenagros', component: EasterEgg}
+];
+
 const router = createRouter({
   history:createWebHashHistory(),
   routes
 });
+
 export default router;
+````
+
+
+Aller dans src/router/main.js :
+````
+import {createApp} from 'vue'
+import App from './App.vue'
+import router from "@/router";
+
+createApp(App).use(router).mount('#app');
 ````
