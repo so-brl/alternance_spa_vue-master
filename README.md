@@ -18,7 +18,7 @@ Compléter le fichier en y intégrant la latitude et la longitude de votre choix
 Vérifiez ensuite que le projet démarre bien et que vous pouvez consulter les différentes vues.
 
 
-#MIGRATION :
+# MIGRATION :
 
 1-Installer le cli :
 ```
@@ -133,4 +133,9 @@ import App from './App.vue'
 import router from "@/router";
 
 createApp(App).use(router).mount('#app');
+````
+# Typescript : 
+
+````
+vue add typescript
 ````

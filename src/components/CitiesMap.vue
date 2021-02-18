@@ -6,13 +6,15 @@
   </div>
 </template>
 
-<script lang="js">
+<script lang="ts">
+
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import {onMounted} from "vue";
 import axios from "axios";
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent( {
   name: 'CitiesMap',
   setup() {
     onMounted(() => {
@@ -26,7 +28,8 @@ export default {
       });
       map.on('load', () => {
         const mapboxgl = require('mapbox-gl/dist/mapbox-gl');
-        let cities = [];
+        let cities :any[] = [];
+
         axios
             .get('https://api.openweathermap.org/data/2.5/find?lat='+process.env.VUE_APP_DEFAULT_LATITUDE+'&lon=' + process.env.VUE_APP_DEFAULT_LONGITUDE + '&cnt=20&cluster=yes&lang=fr&units=metric&APPID=' + process.env.VUE_APP_OW_APP_ID)
             .then((citiesData) => {
@@ -46,7 +49,7 @@ export default {
     });
     return {};
   },
-};
+});
 </script>
 
 <style>
