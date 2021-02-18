@@ -1,30 +1,68 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div id="app">
+
+    <header id="app_header">
+      <img src="./assets/logo-cn.png" alt="Logo Campus Numérique">
+      <div>
+        <router-link to="/villes">Liste</router-link>
+        <router-link to="/carte">Carte</router-link>
+      </div>
+    </header>
+    <router-view></router-view>
   </div>
-  <router-view/>
 </template>
 
+<script>
+
+
+
+export default {
+  name: 'App'
+}
+</script>
+
 <style>
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #262626;
 }
 
-#nav {
-  padding: 30px;
+#app_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #262626;
+  padding-right: 20px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#app_header img {
+  height: 80px;
+  padding: 20px;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#app_header a {
+  color: white;
+  text-transform: uppercase;
+  padding: 20px;
+  text-decoration: none;
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+}
+
+#map .marker {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
 }
 </style>
