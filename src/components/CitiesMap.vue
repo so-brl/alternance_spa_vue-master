@@ -2,7 +2,11 @@
 
   <div>
     <h1>Carte des villes</h1>
-    <div id='map'></div>
+    <div id='map'>
+      <Map v-for="city of cities" :key="city.id" :name="city.name" :weather="city.weather"
+            :temperature="city.temperature" :updated-at="city.updatedAt"></Map>
+
+    </div>
   </div>
 </template>
 

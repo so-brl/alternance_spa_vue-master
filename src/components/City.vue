@@ -12,7 +12,7 @@ import moment from 'moment'
 export default defineComponent({
   name: 'City',
   props: {
-    name: String,
+    name: String ,
     weather: String,
     temperature: Number,
     updatedAt:Date,
