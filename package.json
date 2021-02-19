@@ -10,12 +10,14 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.4",
+    "es6-promise": "^4.2.8",
     "mapbox-gl": "^1.13.0",
     "timeago.js": "^4.0.2",
     "vue": "^3.0.5",
     "vue-class-component": "^8.0.0-0",
     "vue-moment": "^4.1.0",
-    "vue-router": "^4.0.3"
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0-0"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.1.0",
@@ -25,6 +27,7 @@
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-plugin-eslint": "^4.5.11",
     "@vue/cli-plugin-typescript": "^4.5.11",
+    "@vue/cli-plugin-vuex": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-typescript": "^5.0.2",
