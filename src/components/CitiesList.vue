@@ -24,6 +24,7 @@ export default defineComponent({
     })
     return {
       cities: computed(() => store.state.cities),
+      getDate:computed(() => store.state.date)
     };
   },
   computed: mapGetters([
