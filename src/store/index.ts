@@ -40,7 +40,7 @@ const store = createStore({
     },
     getters: {
         fetchCities: state => state.cities,
-        getData : state => state.date
+        getDate : state => state.date
     },
     modules: {}
 })
