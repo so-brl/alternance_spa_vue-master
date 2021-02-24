@@ -5,7 +5,7 @@
       <input type="text" v-model="searchQuery">
       <button @click="onButtonClicked($event)">Ajouter</button>
     </form>
-    <ul v-if="searchQuery">
+    <ul v-if="searchQuery || haveResult">
       <p>Liste de villes ajoutées :</p>
       <li v-for="city in searchCities" :key="city">
         {{city}},
@@ -15,7 +15,7 @@
     <form>
       <button @click="showcity()">Rechercher</button>
     </form>
-    <div v-if="showResult" >
+    <div v-if="showResult || haveResult" >
       <City v-for="result in results" :key="result.name" :name="result.name" :weather="result.weather[0].description"
             :temperature="result.main.temp" :updated-at="result.updatedAt"></City>
 
@@ -38,6 +38,7 @@ export default defineComponent({
   },
 
   setup() {
+    let haveResult = false;
     let  dataList = [];
     let searchQuery = ref()
     const store = useStore();
@@ -45,9 +46,10 @@ let showResult = false;
     onMounted(() => {
     })
     return {
-      //results: store.state. results,
-       results: computed(() => store.state.results),
+
+      results: computed(() => store.state.results),
       searchCities :computed(() => store.state.searchCities),
+      haveResult,
       showResult,
       searchQuery,
       onButtonClicked() {
@@ -58,6 +60,7 @@ let showResult = false;
 
       },
       showcity(){
+         this.haveResult =true
         this.showResult = true;
         store.dispatch("fetchlistSearch",dataList);
       }
