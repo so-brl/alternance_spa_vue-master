@@ -26,14 +26,13 @@
 </template>
 
 <script>
-//import Search from "@/components/Search";
 import City from "@/components/City";
 import {computed, defineComponent, onMounted,ref} from "vue";
 
 import {useStore} from "vuex";
 
 export default defineComponent({
-  name: "Search",
+  name: 'Search',
   components: {
     City
   },
@@ -46,7 +45,8 @@ let showResult = false;
     onMounted(() => {
     })
     return {
-      results: computed(() => store.state.results),
+      //results: store.state. results,
+       results: computed(() => store.state.results),
       searchCities :computed(() => store.state.searchCities),
       showResult,
       searchQuery,
