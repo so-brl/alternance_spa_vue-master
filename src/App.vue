@@ -5,6 +5,7 @@
       <div>
         <router-link to="/villes">Liste</router-link>
         <router-link to="/carte">Carte</router-link>
+        <router-link to="/search">Rechercher</router-link>
       </div>
     </header>
     <router-view></router-view>
@@ -13,15 +14,26 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import CitiesList from './components/CitiesList.vue';
+//import { Options, Vue } from 'vue-class-component';
 
-@Options({
-  components: {
-    CitiesList,
+import {useStore} from "vuex";
+import {defineComponent, onMounted} from "vue";
+
+
+export default defineComponent({
+  name: 'App',
+  setup() {
+    const store = useStore();
+    store.commit('initStore');
+    onMounted(()=>{
+      store.subscribe((mutation,state) => {
+     localStorage.setItem('store',JSON.stringify(state));
+      })
+      store.dispatch('fetchWeather');
+    })
   },
 })
-export default class App extends Vue {}
+
 </script>
 
 <style>

@@ -6,9 +6,9 @@
         :zoom="zoom"
         :center="[$store.state.latittude, $store.state.longitude]"
     >
-      <l-tile-layer  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" ></l-tile-layer>
+      <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"></l-tile-layer>
 
-      <l-marker v-for="city in cities" :lat-lng="[city.lat, city.lon]" :key="city.name">
+      <l-marker v-for="city in loadedData" :lat-lng="[city.lat, city.lon]" :key="city.name">
         <l-icon :icon-url="`https://openweathermap.org/img/wn/${city.icon}.png`" :icon-size="iconSize"/>
       </l-marker>
 
@@ -25,7 +25,7 @@ import {
   LIcon,
 } from "@vue-leaflet/vue-leaflet";
 import "leaflet/dist/leaflet.css";
-import {computed, defineComponent, onMounted} from "vue";
+import {computed, defineComponent} from "vue";
 import {useStore} from "vuex";
 
 export default defineComponent({
@@ -36,18 +36,16 @@ export default defineComponent({
     LMarker,
     LIcon,
   },
+
   setup() {
     const store = useStore();
-    onMounted(() => {
-      store.dispatch("fetchCities");
 
-    })
     return {
-      cities: computed(() => store.state.cities),
+      loadedData: store.state.weather,
       zoom: computed(() => store.state.zoom),
       iconSize: computed(() => store.state.iconSize),
-
     };
-  }
+  },
+
 });
 </script>

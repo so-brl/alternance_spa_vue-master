@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>Liste des villes</h1>
-    <h2> Nous somme le  {{ getDate }} </h2>
-    <City v-for="city of cities" :key="city.id" :name="city.name" :weather="city.weather"
+<!--    <h2> Nous somme le  {{ new Date(getDate).toLocaleDateString()}} </h2>-->
+    <City v-for="city of loadedData" :key="city.id" :name="city.name" :weather="city.weather"
           :temperature="city.temperature" :updated-at="city.updatedAt"></City>
   </div>
 </template>
 
 <script lang="ts">
 import City from "./City.vue";
-import {defineComponent, onMounted, computed} from 'vue';
-import {useStore, mapGetters} from "vuex";
+import {defineComponent} from 'vue';
+import {useStore} from "vuex";
 
 export default defineComponent({
   name: 'CitiesList',
@@ -19,18 +19,12 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
-    onMounted(() => {
-      store.dispatch("fetchCities");
-    })
     return {
-      cities: computed(() => store.state.cities),
-      getDate:computed(() => store.state.date)
+     loadedData: store.state.weather
     };
-  },
-  computed: mapGetters([
-    'getDate'
-  ]),
-})
+  }
+
+});
 
 
 </script>
