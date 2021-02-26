@@ -1,0 +1,106 @@
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+ .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+      width: 100vw;
+      padding-right: 0;
+      padding-left: 0;
+     margin-right: auto;
+     margin-left: auto;
+ }
+
+.text-grey{
+    color: darkgrey;
+}
+
+.wrapper{
+    height: 100vh;
+}
+.cityCard{
+   padding: 4rem 2rem 2rem 2rem;
+  margin: 2rem 1rem 2rem 1rem;
+    background-color: #0f0f0f;
+    border-radius:25px;
+    box-shadow: 5px 5px 5px black;
+}
+.update{
+    font-size: 11px;
+    color:#404040;
+}
+.weatherItems{
+    /*text-align: left;*/
+}
+.temperature{
+    color: white;
+    font-size: 42px;
+    font-weight: bolder;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.ciel{
+    text-transform: capitalize;
+}
+.nav-view{
+    background-color: black;
+}
+.iconWeather{
+    height: 80px;
+    width: auto;
+}
+.cityName{
+ text-transform: uppercase;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.sidebar{
+    background-color: black;
+}
+
+.btn{
+    border-radius: 25px;
+}
+.btn-city {
+    background-color: #404040;
+    color: white;
+    margin: 1em;
+    padding: 0.5em 1.3em 0.5em 2em;
+    border-radius: 25px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+.btn-city:hover {
+    background-color: black;
+    color:#404040;
+    margin: 1em;
+    padding: 0.5em 1.3em 0.5em 2em;
+    border-radius: 25px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+}
+
+button{
+
+    background: transparent;
+    font-size: 100%;
+    border: 0 none;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.closeIcon{
+    background-color: black;
+    border-radius: 50px;
+    padding: 0.4rem 0.8em;
+}
+.closeIcon:hover{
+    background-color: #404040;
+    border-radius: 50px;
+    padding: 0.4rem 0.8em;
+    color: white;
+}
+

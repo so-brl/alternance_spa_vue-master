@@ -1,11 +1,9 @@
 <template>
   <div id="app">
-    <header id="app_header">
-      <img src="./assets/logo-cn.png" alt="Logo Campus Numérique">
+    <header id="app_header" class="nav-view">
       <div>
         <router-link to="/villes">Liste</router-link>
         <router-link to="/carte">Carte</router-link>
-        <router-link to="/search">Rechercher</router-link>
       </div>
     </header>
     <router-view></router-view>
@@ -47,10 +45,12 @@ export default defineComponent({
 
 #app_header {
   display: flex;
+  width: 100vw;
   align-items: center;
-  justify-content: space-between;
-  background-color: #262626;
+  justify-content: flex-end;
+  background-color: black;
   padding-right: 20px;
+  flex-direction: row;
 }
 
 #app_header img {
@@ -74,5 +74,11 @@ export default defineComponent({
   width: 50px;
   height: auto;
   cursor: pointer;
+}
+</style>
+<style lang="scss">
+$color: red;
+p{
+  collapse: $color;
 }
 </style>

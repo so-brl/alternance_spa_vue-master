@@ -1,24 +1,21 @@
 <template>
-  <div>
-    <h1>Rechercher la météo par ville</h1>
-    <form>
-      <input type="text" v-model="searchQuery">
-      <button @click="onButtonClicked($event)">Ajouter</button>
-    </form>
-    <ul v-if="searchQuery || haveResult">
-      <p>Liste de villes ajoutées :</p>
-      <li v-for="city in searchCities" :key="city">
-        {{city}},
-      </li>
-    </ul>
-
-    <form>
-      <button @click="showcity()">Rechercher</button>
-    </form>
-    <div v-if="showResult || haveResult" >
-      <City v-for="result in results" :key="result.name" :name="result.name" :weather="result.weather[0].description"
-            :temperature="result.main.temp" :updated-at="result.updatedAt"></City>
-
+  <div class="form-group search-card">
+    <h5 class="text-left mt-5">Ville :</h5>
+    <div class="d-flex flex-column">
+      <form class="flex-nowrap">
+        <input class="h-auto" type="text" v-model="searchQuery">
+        <button class="ml-1  btn btn-success btn-sm" @click="addCity($event)">+</button>
+      </form>
+      <button class="btn-city mt-2" @click="supcity()" v-for="city in searchCities" :key="city">
+        <div class="d-flex row">
+          <div>
+            {{ city }} <span class="closeIcon">X</span>
+          </div>
+        </div>
+      </button>
+      <form>
+        <button class="mt-3 btn btn-success btn-lg" @click="showcity()">Rechercher</button>
+      </form>
     </div>
 
 
@@ -27,7 +24,7 @@
 
 <script>
 import City from "@/components/City";
-import {computed, defineComponent, onMounted,ref} from "vue";
+import {computed, defineComponent, ref} from "vue";
 
 import {useStore} from "vuex";
 
@@ -36,33 +33,39 @@ export default defineComponent({
   components: {
     City
   },
-
+  // mounted: {
+  //   test: function ()  {
+  //     console.log('ici')
+  //   }
+  // },
   setup() {
     let haveResult = false;
-    let  dataList = [];
+    let searchList = [];
     let searchQuery = ref()
     const store = useStore();
-let showResult = false;
-    onMounted(() => {
-    })
+    let showResult = false;
     return {
+      loadData: computed(() => store.state.results),
+      searchCities: computed(() => store.state.searchCities),
 
-      results: computed(() => store.state.results),
-      searchCities :computed(() => store.state.searchCities),
       haveResult,
       showResult,
       searchQuery,
-      onButtonClicked() {
 
+      addCity() {
         let data = searchQuery.value
-        dataList.push(data)
-        store.dispatch("listCitySearch",dataList);
+        searchList.push(data)
+        store.dispatch("listCitySearch", searchList)
+        return searchList
 
       },
-      showcity(){
-         this.haveResult =true
+      showcity() {
+        this.haveResult = true
         this.showResult = true;
-        store.dispatch("fetchlistSearch",dataList);
+        console.log('cliqué')
+        console.log(searchList)
+        store.dispatch("getWeatherList", searchList);
+
       }
     };
   },

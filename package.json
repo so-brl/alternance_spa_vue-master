@@ -10,10 +10,13 @@
   "dependencies": {
     "@vue-leaflet/vue-leaflet": "^0.5.0",
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "core-js": "^3.6.4",
     "es6-promise": "^4.2.8",
+    "jquery": "^3.5.1",
     "leaflet": "^1.7.1",
     "mapbox-gl": "^1.13.0",
+    "popper.js": "^1.16.1",
     "timeago.js": "^4.0.2",
     "vue": "^3.0.5",
     "vue-class-component": "^8.0.0-0",
@@ -37,6 +40,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "moment-timezone": "^0.5.33",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
     "typescript": "~3.9.3"
   },
   "eslintConfig": {
